@@ -40,7 +40,19 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'corsheaders',
+'opbeat.contrib.django',
 ]
+
+OPBEAT = {
+    'ORGANIZATION_ID': '0b3e1efa69ed4d74b347cfbf565a7467',
+    'APP_ID': '87cda7493a',
+    'SECRET_TOKEN': '6ceaaec9a65f56c682d05d8876ef0dec9e631186',
+}
+
+MIDDLEWARE_CLASSES = (
+    'opbeat.contrib.django.middleware.OpbeatAPMMiddleware',
+    # ...
+)
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',

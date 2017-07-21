@@ -1,0 +1,1 @@
+web: gunicorn BlogMaker.wsgi --log-file -

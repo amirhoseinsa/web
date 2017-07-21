@@ -1,0 +1,24 @@
+.father{
+    width: 40%;
+    margin-left: 30%;
+    height: 40%;
+    margin-top: 10%;
+}
+
+input[type=text], input[type=password] , input[type=FirstName], input[type=LastName], input[type=Email]{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.top{
+    height: 80px;
+    width: 5%;
+    margin-left: 2%;
+    text-align: center;
+    margin-top: 50px;
+    position: fixed;
+}

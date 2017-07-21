@@ -1,0 +1,217 @@
+.banner {
+    height: auto;
+    width: 80%;
+    float: left;
+}
+.banner2{
+    height: 300px;
+    width: 10%;
+    float: left;
+}
+
+div.post {
+    border: 2px solid black;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.header{
+    height: auto;
+    width: 100%;
+    text-align: center;
+}
+.header2{
+    clear: both;
+    height: 50px;
+    width: 100%;
+    text-align: center;
+}
+.post{
+    height: auto;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.sep{
+    height: 12px;
+    width: 2.5%;
+
+    float: left;
+}
+
+.post2{
+    height: auto;
+    width: 10%;
+    background-color: #ff1d55;
+    float: left;
+}
+
+.left {
+    height: 18px;
+    width: 10%;
+    float: left;
+}
+.post3{
+    height: auto;
+    text-align: center;
+    width: 30%;
+    background-color: #103fff;
+    margin-left: 5%;
+    float: left;
+}
+
+.writer{
+    margin-top: 0px;
+    padding-top: 0px;
+    width: 100%;
+    height: auto;
+
+}
+
+.pic{
+
+     width: 100%;
+     height: auto;
+     float: left;
+    margin-top: auto;
+    margin-bottom: auto;
+
+ }
+.text{
+    margin-top: 4%;
+    float: left;
+    width: 100%;
+    height: auto;
+    text-align: center;
+}
+
+.sepp{
+    width: 100%;
+    height: 20px;
+    clear: both;
+}
+
+.sepline{
+    height: 3px;
+    width: 100%;
+    margin-top: 5%;
+    padding: 0;
+    background-image: -webkit-linear-gradient(left, #000000, #0cafff, #000000);
+    background-image: -moz-linear-gradient(left, #000000, #0cafff, #000000);
+    background-image: -ms-linear-gradient(left, #000000, #0cafff, #000000);
+    background-image: -o-linear-gradient(left, #000000, #0cafff, #000000);
+}
+
+.button {
+
+    border: none;
+    color: #1f36ff;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.post4{
+    height: auto;
+    width: 25%;
+    float: left;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+
+.posts{
+    text-align: center;
+}
+
+
+.top{
+    height: 80px;
+    width: 5%;
+    margin-left: 2%;
+    text-align: center;
+    margin-top: 50px;
+    position: fixed;
+}
+
+.new_post{
+    height: 80px;
+    width: 5%;
+    margin-left: 91%;
+    text-align: center;
+    margin-top: 150px;
+    position: fixed;
+}
+
+.sign_out{
+    height: 80px;
+    width: 5%;
+    margin-left: 91%;
+    text-align: center;
+    margin-top: 50px;
+    position: fixed;
+}
+
+.button1{
+    width: 100%;
+    margin-left: 47%;
+}
+
+.title{
+    text-align: center;
+}
+
+.comment{
+    margin-top: 100px;
+    text-align: center;
+    margin-left: 20%;
+    width: 60%;
+}
+
+
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.show_comments{
+    width: 60%;
+    margin-left: 20%;
+
+}
+
+.sepline2{
+    height: 3px;
+    width: 60%;
+    margin-left: 20%;
+    margin-top: 5%;
+    padding: 0;
+    background-image: -webkit-linear-gradient(left, #f4ffeb, #6a6969, #f4ffeb);
+    background-image: -moz-linear-gradient(left, #f4ffeb, #6a6969, #f4ffeb);
+    background-image: -ms-linear-gradient(left, #f4ffeb, #6a6969, #f4ffeb);
+    background-image: -o-linear-gradient(left, #f4ffeb, #6a6969, #f4ffeb);
+}
+
+.sepline22{
+    height: 3px;
+    margin-top: 5%;
+    padding: 0;
+    background-image: -webkit-linear-gradient(left, #f4ffeb, #6a6969, #f4ffeb);
+    background-image: -moz-linear-gradient(left, #f4ffeb, #6a6969, #f4ffeb);
+    background-image: -ms-linear-gradient(left, #f4ffeb, #6a6969, #f4ffeb);
+    background-image: -o-linear-gradient(left, #f4ffeb, #6a6969, #f4ffeb);
+}
+
+.posts{
+    width: 60%;
+    margin-left: 20%;
+}

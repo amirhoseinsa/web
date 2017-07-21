@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Blog</title>
+    <script src="miladi_to_shamsi.js"></script>
+    <link href="blog.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript">
+        tmp = [0,1];
+        var tmp;
+        var current_offset = 0;
+        function codeAddress() {
+
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    tmp = 0;
+                    console.log(this.response);
+                    response = JSON.parse(this.responseText);
+                    res = JSON.parse(this.responseText);
+                    console.log("asdasdasd" + res);
+                    console.log(response);
+                    localStorage.setItem('posts' , response);
+
+
+
+                    var first_div = document.getElementById("first");
+                    var second_div = document.getElementById("second");
+                    var third_div = document.getElementById("third");
+
+                    for (var i = 0 ; i < res.posts.length ; i ++){
+                        var new_div = document.createElement('div');
+                        new_div.className = "post4";
+                        new_div.setAttribute("class", "post4");
+                        var post_div = document.createElement('div');
+                        post_div.className = "post";
+
+                        var writer_div = document.createElement('div');
+                        writer_div.className = "writer";
+
+                        var pic_div = document.createElement('div');
+                        pic_div.className = "pic";
+
+                        var  im = document.createElement('img');
+                        im.src = "pics/prof.png";
+                        im.style = style="width: 30%; ";
+
+                        var  post_im = document.createElement('img');
+                        post_im.src = "pics/manu.png";
+                        post_im.style = style="width: 30%; ";
+
+                        var text_div = document.createElement('div');
+                        text_div.innerHTML = "Amir Hosein Safari";
+                        text_div.className = "text";
+
+                        var sepp_div = document.createElement('div');
+                        sepp_div.className = "sepp"; //clearboth ?
+
+                        var sepline_div = document.createElement('div');
+                        sepline_div.className = "sepline";
+
+                        var h55 = document.createElement('h5');
+
+                        var jumptomorrow = 0;
+                        var year = parseInt(res.posts[i].datetime[20]+res.posts[i].datetime[21]+res.posts[i].datetime[22]+res.posts[i].datetime[23]);
+                        var month = res.posts[i].datetime[4]+res.posts[i].datetime[5]+res.posts[i].datetime[6];
+                        var day = parseInt(res.posts[i].datetime[9]);
+                        var dayname = res.posts[i].datetime[0]+res.posts[i].datetime[1]+res.posts[i].datetime[2];
+                        var hour = parseInt(res.posts[i].datetime[11]+res.posts[i].datetime[12]);
+                        var minute = parseInt(res.posts[i].datetime[14]+res.posts[i].datetime[15]);
+                        if (minute >= 30){
+                            hour = hour + 5;
+                            minute = minute - 30;
+                        }else{
+                            hour = hour + 4;
+                            minute = minute + 30;
+                        }
+                        if (hour>=24){
+                            jumptomorrow = 1;
+                            hour = hour - 24;
+                            day = day + 1;
+
+                        }
+                        var time = hour+res.posts[i].datetime[13]+minute+res.posts[i].datetime[16]+res.posts[i].datetime[17]+res.posts[i].datetime[18];
+
+                        h55.innerHTML = miladi_to_shamsi(year,month,day,dayname,jumptomorrow)[0] + " " + miladi_to_shamsi(year,month,day,dayname,jumptomorrow)[1]+" " + miladi_to_shamsi(year,month,day,dayname,jumptomorrow)[2]+" " + miladi_to_shamsi(year,month,day,dayname,jumptomorrow)[3] + " _ ساعت : " + time;
+
+
+                        var h22 = document.createElement('h2');
+                        h22.innerHTML = res.posts[i].title;
+
+                        var h555 = document.createElement('h5');
+                        var tmp22 = res.posts[i].summery.replace(/(?:\r\n|\r|\n)/g, '<br />');
+                        console.log(tmp22);
+                        h555.innerHTML = tmp22;
+
+                        aa = document.createElement('a');
+                        aa.innerHTML = "read more ...";
+
+                        aa.href = "post.html";
+
+                        tmp[i] = res.posts[i].id;
+
+                        console.log("qq " + tmp[i]);
+                        postcall(res.posts[i].id);
+
+                        writer_div.appendChild(pic_div);
+                        text_div.appendChild(h55);
+                        writer_div.appendChild(text_div);
+                        post_div.appendChild(writer_div);
+
+                        pic_div.appendChild(im);
+
+                        sepp_div.appendChild(sepline_div);
+                        post_div.appendChild(sepp_div);
+
+                        post_div.appendChild(post_im);
+
+                        post_div.appendChild(h22);
+
+                        post_div.appendChild(h555);
+
+                        post_div.appendChild(aa)
+
+                        if(i%3 == 0)
+                            first_div.appendChild(post_div);
+                        else if ( i%3 == 1)
+                            second_div.appendChild(post_div);
+                        else
+                            third_div.appendChild(post_div);
+                    }
+                }
+            };
+            xhttp.open("GET", "https://ce419.herokuapp.com/blog/posts?count=6&offset="+current_offset, true);
+            xhttp.setRequestHeader("X-Token", localStorage.getItem('tt'));
+            xhttp.send(null);
+            current_offset = current_offset + 6;
+
+            detect_bottom();
+        }
+
+        function postcall(tmp){
+            aa.addEventListener('click',function(){
+                localStorage.setItem('current_id' , tmp);
+            });
+        }
+
+
+
+        function detect_bottom() {
+
+            document.addEventListener('scroll', function () {
+                if (document.body.scrollHeight <
+                    document.body.scrollTop +
+                    window.innerHeight + window.scrollMaxY && tmp == 0 ) {
+                    tmp = 1;
+                    console.log(tmp);
+                    codeAddress();
+                }
+            });
+        }
+    </script>
+</head>
+<body background="pics/back2.png"  onload="codeAddress();">
+
+    <a id="top"></a>
+
+
+    <div class="banner2">
+
+    </div>
+
+
+    <div class="top"><a href="#top"><img src="pics/btop.png" style="width: auto; height: 60px;"></a> </div>
+
+
+    <div class="new_post">
+        <a href="create_post.html"><img src="pics/plus-sign-icon-31.png" style="width: auto; height: 70px;"></a>
+    </div>
+
+    <div class="sign_out">
+        <a href="login.html" onclick="function aa() {
+               localStorage.setItem('tt', null);
+           }"><img src="pics/logout_rounded1600.png" style="width: auto; height: 70px;"></a>
+    </div>
+
+
+    <div class="banner">
+        <img src="pics/photo_2017-05-04_01-30-42.jpg" style="width: 100%; height: 100%">
+    </div>
+
+
+    <div class="banner2">
+    </div>
+
+    <div class="header2">
+    </div>
+
+    <div class="header">
+        Hi this is my Blog!<br />
+        You can't find any interesting thing here<br />
+        Have fun
+
+    </div>
+
+    <div class="header2">
+    </div>
+
+
+
+    <div class="left">
+
+    </div>
+
+    <div class="post4" id="first">
+
+    </div>
+
+
+    <div class="sep"></div>
+
+
+    <div class="post4" id = "second">
+
+    </div>
+
+
+    <div class="sep"></div>
+
+
+    <div class="post4" id = "third">
+
+    </div>
+
+    <div>
+
+    </div>
+
+</body>
+</html>

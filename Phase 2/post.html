@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="main.js"></script>
+    <script src="miladi_to_shamsi.js"></script>
+    <meta charset="UTF-8">
+    <title>post</title>
+    <link href="blog.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript">
+        function codeAddress() {
+
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    response = JSON.parse(this.responseText);
+                    res = JSON.parse(this.responseText);
+                    localStorage.setItem('posts' , response);
+
+                    var title = document.getElementById("first");
+                    var qq = document.getElementById("second");
+
+                    var text = document.createElement('h5');
+                    var tmp22 = response.post.text.replace(/(?:\r\n|\r|\n)/g, '<br />');
+                    text.innerHTML = tmp22;
+
+
+                    var date = document.createElement('h5');
+                    var jumptomorrow = 0;
+                    var year = parseInt(response.post.datetime[20]+response.post.datetime[21]+response.post.datetime[22]+response.post.datetime[23]);
+                    var month = response.post.datetime[4]+response.post.datetime[5]+response.post.datetime[6];
+                    var day = parseInt(response.post.datetime[9]);
+                    var dayname = response.post.datetime[0]+response.post.datetime[1]+response.post.datetime[2];
+                    var hour = parseInt(res.post.datetime[11]+res.post.datetime[12]);
+                    var minute = parseInt(res.post.datetime[14]+res.post.datetime[15]);
+
+                    if (minute >= 30){
+                        hour = hour + 5;
+                        minute = minute - 30;
+                    }else{
+                        hour = hour + 4;
+                        minute = minute + 30;
+                    }
+                    if (hour>=24){
+                        jumptomorrow = 1;
+                        hour = hour - 24;
+                        day = day + 1;
+
+                    }
+                    var time = hour+res.post.datetime[13]+minute+res.post.datetime[16]+res.post.datetime[17]+res.post.datetime[18];
+                    console.log("asasdasdasdasd" + jumptomorrow);
+                    date.innerHTML = miladi_to_shamsi(year,month,day,dayname,jumptomorrow)[0] + " " + miladi_to_shamsi(year,month,day,dayname,jumptomorrow)[1]+" " + miladi_to_shamsi(year,month,day,dayname,jumptomorrow)[2]+" " + miladi_to_shamsi(year,month,day,dayname,jumptomorrow)[3] + " _ ساعت : " + time;
+
+
+                    var tt = document.createElement('h1');
+                    tt.innerHTML = response.post.title;
+
+                    qq.appendChild(text);
+                    title.appendChild(tt);
+                    qq.appendChild(date);
+                    get_comments();
+                }
+            };
+            xhttp.open("GET", "https://ce419.herokuapp.com/blog/post?id="+localStorage.getItem('current_id'), true);
+            xhttp.setRequestHeader("X-Token", localStorage.getItem('tt'));
+            xhttp.send(null);
+        }
+    </script>
+</head>
+<body background="pics/back2.png" onload="codeAddress();" >
+
+
+    <div class="top"><a href="blog.html"><img src="pics/680601_arrows_512x512.png" style="width: auto; height: 60px;"></a> </div>
+
+    <div class="title" id = "first">
+    </div>
+
+    <div>
+        <img src="pics/manu.png" style="width :20%; height: auto ;padding-left: 40%">
+    </div>
+
+    <div class="posts" id="second">
+    </div>
+
+    <div class="posts" id="date">
+    </div>
+
+    <div class="sepp" id="sepp">
+        <div class="sepline2"></div>
+    </div>
+
+
+    <div class = "comment">
+        <label><b>comment</b></label>
+        <!--<input id="comment" type="text" placeholder="Enter comment" name="comment" required >-->
+        <br/>
+        <br/>
+        <textarea rows="2" cols="50" id="comment" type="text" placeholder="Enter comment" name="comment" required style="width: 100%">
+        </textarea>
+        <br/>
+        <br/>
+        <button type="submit" onclick="send_comment()" >
+            send comment
+        </button>
+    </div>
+
+    <div class="sepp">
+        <div class="sepline2"></div>
+    </div>
+
+    <div class="show_comments" id = "show_comments">
+    </div>
+
+</body>
+</html>

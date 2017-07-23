@@ -153,14 +153,3 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-# admin info
-# username = nima
-# email = nima@gmail.com
-# password = nimanima
-
-# user info : is the the pattern below i is the counter
-# username = nima + i
-# password = Nima + i
-# first_name = nima + i
-# last_name = nima + i
-# email = nima + i @ gmail.com
